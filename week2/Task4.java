@@ -10,9 +10,9 @@ public class Task4 {
         int hoursWorked = 9;
 
         if (isHoliday) {
-            totalWage = HOLIDAY_WAGE * (8) + (hoursWorked >= WORKING_HOURS_PER_DAY ? HOLIDAY_WAGE * EXTRA_RATE * (hoursWorked - WORKING_HOURS_PER_DAY) : 0);
+            totalWage = HOLIDAY_WAGE * (WORKING_HOURS_PER_DAY) + (hoursWorked >= WORKING_HOURS_PER_DAY ? HOLIDAY_WAGE * EXTRA_RATE * (hoursWorked - WORKING_HOURS_PER_DAY) : 0);
         } else {
-            totalWage = NORMAL_WAGE * (8) + (hoursWorked >= WORKING_HOURS_PER_DAY ? OVERTIME_WAGE * (hoursWorked - WORKING_HOURS_PER_DAY) : 0);
+            totalWage = NORMAL_WAGE * (WORKING_HOURS_PER_DAY) + (hoursWorked >= WORKING_HOURS_PER_DAY ? OVERTIME_WAGE * (hoursWorked - WORKING_HOURS_PER_DAY) : 0);
         }
         System.out.println("Total wage: " + totalWage);
     }
