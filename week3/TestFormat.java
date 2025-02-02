@@ -55,7 +55,8 @@ public class TestFormat
      // Percentage
      double percent = 0.8457;
      System.out.println("Percent  : " + String.format("%.1f%%", percent * 100)); // "84.6%"
-
+     System.out.println("Percent  : " + String.format("%.1f%n", percent * 100)); // n is new line
+     System.out.println("hands up");
      
      // Currency (using default locale)
      System.out.println("Currency : " + String.format("$%,.2f", bigNum));        // "$1,234,567.89"

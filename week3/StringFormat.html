@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java String Formatting</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 900px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #333;
+        }
+        code {
+            background: #eee;
+            padding: 3px 6px;
+            border-radius: 5px;
+            font-family: monospace;
+        }
+        pre {
+            background: #eee;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Explain Java Formatting of String in Java</h1>
+        <p><strong>Answer:</strong><br>
+        Java provides a powerful mechanism for formatting strings that is both flexible and type-safe. The formatting system is largely inspired by the C language’s <code>printf</code>, but it includes several enhancements tailored to Java’s type system and localization needs. Below is an explanation of how Java formatting works for strings.</p>
+
+        <h2>Basic Concepts</h2>
+        <p>Java formatting involves two main parts:</p>
+        <ul>
+            <li><strong>Format String:</strong> A string that contains fixed text mixed with one or more format specifiers.</li>
+            <li><strong>Argument List:</strong> A collection of values that are inserted into the format string in place of the corresponding specifiers.</li>
+        </ul>
+        <p>A typical usage is with the static method <code>String.format</code>, for example:</p>
+        <pre>String s = String.format("Hello %s, you are %d years old", name, age);</pre>
+
+        <h2>Format Specifiers</h2>
+        <p>The format specifiers in Java follow the syntax:</p>
+        <pre>%[argument_index$][flags][width][.precision]conversion</pre>
+        <p>Each component is optional except for the conversion character:</p>
+        <ul>
+            <li><strong>Argument Index:</strong> Specifies which argument from the list to use by its position (e.g., <code>%2$s</code> uses the second argument). This capability allows you to reorder arguments without changing their order in the method call.</li>
+            <li><strong>Flags:</strong> Modify the output’s format. For example, the <code>'-'</code> flag left-justifies the output, while <code>'0'</code> pads numerals with zeros.</li>
+            <li><strong>Width:</strong> A minimum number of characters to output. If the content is shorter, it gets padded (typically with spaces unless other flags are used).</li>
+            <li><strong>Precision:</strong> Defines the maximum number of characters or the number of decimal digits (depending on the conversion). For strings, precision limits the length of the output, and for floating-point numbers, it controls the number of decimal places.</li>
+            <li><strong>Conversion Character:</strong> Specifies the type of formatting. Examples:
+                <ul>
+                    <li><code>%s</code> formats strings.</li>
+                    <li><code>%d</code> formats decimal integers.</li>
+                    <li><code>%f</code> formats floating point values.</li>
+                    <li><code>%c</code> formats characters.</li>
+                    <li>Date/time conversions use <code>%t</code> or <code>%T</code> followed by a date-specific suffix (such as <code>%tH</code> for the hour in 24-hour format).</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h2>Example Usages</h2>
+        <h3>Reordering Arguments:</h3>
+        <pre>formatter.format("%4$2s %3$2s %2$2s %1$2s", "a", "b", "c", "d")</pre>
+        <p>This prints the arguments in reverse order, using the argument index feature.</p>
+
+        <h3>Locale-Specific Formatting:</h3>
+        <pre>String s = String.format(Locale.FRANCE, "e = %+10.4f", Math.E);</pre>
+
+        <h3>Date and Time Formatting:</h3>
+        <pre>System.out.format("Local time: %tT", Calendar.getInstance());</pre>
+        <p>The <code>%tT</code> specifier prints the time in <code>HH:MM:SS</code> format.</p>
+
+        <h2>Error Checking and Exceptions</h2>
+        <p>Unlike C’s <code>printf</code> (which may silently ignore certain flags), Java’s formatting system is strict. If you provide a format specifier that does not correspond correctly to the supplied argument or if you combine incompatible flags (such as using both <code>'#'</code> and <code>'0'</code> in the wrong context), Java will throw an appropriate <code>IllegalFormatException</code>.</p>
+
+        <h2>List of All Flags</h2>
+        <ul>
+            <li><code>-</code> Left-justifies the output within the specified width (adds padding on the right if needed).</li>
+            <li><code>+</code> Always includes a sign for numerical outputs (a plus for positive numbers, a minus for negatives).</li>
+            <li><code> </code> (space) Leaves a blank space before positive numbers (serving as a placeholder for the sign) while negative numbers retain their minus sign.</li>
+            <li><code>0</code> Pads the output with zeros instead of spaces up to the specified width.</li>
+            <li><code>,</code> Inserts locale-specific grouping separators (such as commas in English) into numeric values.</li>
+            <li><code>(</code> Encloses negative numbers within parentheses instead of using a minus sign.</li>
+            <li><code>#</code> Uses an alternate form when available. For example, for floating-point numbers, this may prevent the truncation of trailing zeros or force the output to include a decimal point.</li>
+            <li><code>&lt;</code> Reuses the argument immediately preceding this specifier so that you do not need to provide the argument a second time.</li>
+        </ul>
+
+        <h2>Special Formatting Cases</h2>
+        <ul>
+            <li>Scientific Notation: <code>"%.2e"</code> formats numbers in scientific notation.</li>
+            <li>Percentages: <code>"%.1f%%"</code> correctly formats percentages.</li>
+            <li>Currency: <code>"$%,.2f"</code> ensures currency formatting.</li>
+        </ul>
+
+        <p>Besides the literal percent conversion <code>"%%"</code>, Java's formatting also provides the <code>"%n"</code> conversion. This conversion does not consume an argument and outputs the platform-specific newline sequence.</p>
+
+        <p>Java's string formatting provides control over alignment, precision, sign display, padding, and localization, making it a powerful tool for formatted output.</p>
+    </div>
+</body>
+</html>

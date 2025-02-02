@@ -46,6 +46,28 @@ This directory contains Java programs demonstrating important programming concep
   - Rounding to nearest integer using +0.5 technique
   - Proper rounding for negative numbers using -0.5
 
+## TestFormat.java
+- **Purpose**: Comprehensive demonstration of Java's string formatting capabilities
+- **Key Learnings**:
+  - Format specifier syntax: `%[flags][width][.precision]type`
+  - Various formatting flags and their uses
+  - Combining multiple format flags
+  - Special number formatting cases
+- **Format Flags Examples**:
+  - `-` Left justification within width
+  - `+` Forces display of sign (+ or -)
+  - ` ` (space) Adds space before positive numbers
+  - `0` Zero padding
+  - `(` Parentheses for negative numbers
+  - `,` Thousand separators grouping
+  - Width control (e.g., `%10.2f`)
+  - Precision control (e.g., `.2f`)
+- **Special Cases**:
+  - Scientific notation formatting
+  - Percentage formatting
+  - Currency formatting
+  - Combining compatible flags
+
 ## Key Takeaways for Week 3:
 - Floating-point arithmetic is inherently imprecise due to binary representation
 - Always use tolerance-based comparison for floating-point numbers
@@ -58,6 +80,11 @@ This directory contains Java programs demonstrating important programming concep
 - Understanding implicit vs explicit type conversion
 - Different rounding techniques for positive and negative numbers
 - Manual rounding implementation using casting and arithmetic
+- String formatting provides powerful number presentation control
+- Format flags can be combined but some combinations are mutually exclusive
+- Understanding width and precision in number formatting
+- Proper usage of format specifiers for different number types
+- Special formatting for scientific notation, percentages, and currency
 
 
 
